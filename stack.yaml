@@ -1,0 +1,17 @@
+resolver: lts-17.10
+
+packages:
+- .
+
+extra-deps:
+- accelerate-1.3.0.0
+- accelerate-llvm-1.3.0.0
+- accelerate-llvm-native-1.3.0.0
+
+flags:
+  llvm-hs:
+    shared-llvm: true
+
+# We should not need to do this, but unfortunately, removing it breaks the stack build.
+ghc-options:
+  llvm-hs: -optcxx=-std=c++14 -optcxx=-lstdc++ -optcxx=-fno-rtti
